@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Development with Node.js & Express.js - Module 2</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fab fa-node-js"></i>
+                <span>Backend Dev Course</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#modules">Modules</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Backend Development with Node.js & Express.js</h1>
+                <p>Master the fundamentals of server-side development with practical examples and real-world projects</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('modules')">Get Started</button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('resources')">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <svg class="hero-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="500" height="500" fill="#f0f0f0"/>
+                    <circle cx="250" cy="250" r="150" fill="#68a063" opacity="0.1"/>
+                    <path d="M 250 150 L 300 200 L 300 350 L 200 350 L 200 200 Z" fill="#68a063"/>
+                    <circle cx="250" cy="200" r="20" fill="#ffffff"/>
+                    <rect x="230" y="250" width="40" height="30" fill="#ffffff"/>
+                    <text x="250" y="350" font-size="24" text-anchor="middle" fill="#68a063" font-weight="bold">Node.js</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Overview -->
+    <section class="overview">
+        <div class="container">
+            <h2>Module 2: Backend Development Overview</h2>
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <i class="fas fa-cube"></i>
+                    <h3>Node.js Fundamentals</h3>
+                    <p>Learn the core concepts of Node.js, architecture, and runtime environment</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-box"></i>
+                    <h3>NPM & Packages</h3>
+                    <p>Master package management and dependency handling with NPM</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Event-Driven Programming</h3>
+                    <p>Understand events, listeners, and asynchronous programming patterns</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-file"></i>
+                    <h3>File System Operations</h3>
+                    <p>Work with files and directories using Node.js APIs</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-server"></i>
+                    <h3>Express.js Framework</h3>
+                    <p>Build web applications with routing and middleware</p>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>RESTful APIs</h3>
+                    <p>Create scalable and efficient REST APIs with Express.js</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Modules -->
+    <section class="modules" id="modules">
+        <div class="container">
+            <h2>Learning Modules</h2>
+            
+            <!-- Module 1: Introduction to Node.js -->
+            <div class="module-section">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <h3><i class="fas fa-cube"></i> Module 1: Introduction to Node.js</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="module-content">
+                    <div class="module-intro">
+                        <p>Node.js is an open-source, cross-platform JavaScript runtime environment built on Chrome's V8 JavaScript engine that allows you to execute JavaScript outside of a browser.</p>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>What is Node.js?</h4>
+                        <p>Node.js enables developers to use JavaScript for server-side development with the following key features:</p>
+                        <ul class="features-list">
+                            <li><strong>Event-Driven Architecture:</strong> Non-blocking, asynchronous I/O operations</li>
+                            <li><strong>Single-Threaded:</strong> Uses event loop for handling concurrent requests</li>
+                            <li><strong>Fast Execution:</strong> Built on V8 engine (same as Chrome)</li>
+                            <li><strong>NPM Ecosystem:</strong> Access to millions of reusable packages</li>
+                            <li><strong>Scalability:</strong> Excellent for I/O-heavy applications</li>
+                            <li><strong>Cross-Platform:</strong> Works on Windows, Linux, macOS</li>
+                        </ul>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>Node.js Architecture</h4>
+                        <div class="architecture-diagram">
+                            <div class="arch-layer">JavaScript Code (Single-threaded)</div>
+                            <div class="arch-layer">Event Loop (Manages async callbacks)</div>
+                            <div class="arch-layer">libuv (Asynchronous I/O)</div>
+                            <div class="arch-layer">V8 Engine (JS Execution)</div>
+                            <div class="arch-layer">OS System Calls</div>
+                        </div>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>Code Example: Hello World</h4>
+                        <pre><code class="language-javascript">// hello-world.js
+console.log('Welcome to Node.js!');
+console.log('Current working directory:', process.cwd());
+console.log('Node version:', process.version);
+
+// Command line arguments
+const args = process.argv.slice(2);
+console.log('Arguments passed:', args);</code></pre>
+                        <p><strong>Run it:</strong> <code>node hello-world.js</code></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 2: Working with Modules and NPM -->
+            <div class="module-section">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <h3><i class="fas fa-box"></i> Module 2: Working with Modules and NPM</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="module-content">
+                    <div class="lesson">
+                        <h4>Built-in Modules</h4>
+                        <p>Node.js comes with several built-in modules for common tasks:</p>
+
+                        <h5>File System Module (fs)</h5>
+                        <pre><code class="language-javascript">const fs = require('fs');
+
+// Reading file content (async)
+fs.readFile('file.txt', 'utf8', (err, data) => {
+    if (err) throw err;
+    console.log(data);
+});
+
+// Writing file content (async)
+fs.writeFile('output.txt', 'Hello World', (err) => {
+    if (err) throw err;
+    console.log('File written!');
+});
+
+// Using promises
+const fs = require('fs').promises;
+async function readFile() {
+    try {
+        const data = await fs.readFile('file.txt', 'utf8');
+        console.log(data);
+    } catch (error) {
+        console.error(error);
+    }
+}</code></pre>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>HTTP Module</h4>
+                        <pre><code class="language-javascript">const http = require('http');
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.end('Welcome to Node.js Server!');
+});
+
+server.listen(3000, () => {
+    console.log('Server running at http://localhost:3000/');
+});</code></pre>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>NPM - Node Package Manager</h4>
+                        <p>NPM is the default package manager for Node.js, hosting hundreds of thousands of free packages.</p>
+                        <h5>Common Commands:</h5>
+                        <pre><code class="language-bash"># Initialize a new project
+npm init
+npm init -y  # Skip interactive prompts
+
+# Install packages
+npm install express
+npm install --save-dev nodemon
+
+# Install specific version
+npm install express@4.18.2
+
+# List installed packages
+npm list
+
+# Update packages
+npm update
+
+# Check security vulnerabilities
+npm audit
+npm audit fix</code></pre>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>package.json Structure</h4>
+                        <pre><code class="language-json">{
+  "name": "my-app",
+  "version": "1.0.0",
+  "description": "A sample Node.js application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 3: Event-Driven Programming -->
+            <div class="module-section">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <h3><i class="fas fa-bolt"></i> Module 3: Event-Driven Programming</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="module-content">
+                    <div class="lesson">
+                        <h4>Understanding Events</h4>
+                        <p>Event-driven programming is a paradigm where the flow of the program is determined by events. In Node.js, events are handled using the EventEmitter class.</p>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>Basic Event Emitter</h4>
+                        <pre><code class="language-javascript">const EventEmitter = require('events');
+
+class MyEmitter extends EventEmitter {}
+
+const emitter = new MyEmitter();
+
+// Register event listener
+emitter.on('userLoggedIn', (user) => {
+    console.log(`${user} logged in successfully!`);
+});
+
+// Emit event
+emitter.emit('userLoggedIn', 'Alice');
+// Output: Alice logged in successfully!</code></pre>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>Timers: setTimeout, setInterval, setImmediate</h4>
+                        <pre><code class="language-javascript">// setTimeout - Executes after delay (once)
+setTimeout(() => {
+    console.log('This runs after 2 seconds');
+}, 2000);
+
+// setInterval - Executes repeatedly
+let count = 0;
+const intervalId = setInterval(() => {
+    count++;
+    console.log(`Counter: ${count}`);
+    if (count >= 5) clearInterval(intervalId);
+}, 1000);
+
+// setImmediate - Next iteration of event loop
+setImmediate(() => {
+    console.log('Immediate callback');
+});</code></pre>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>Callbacks - Error-First Convention</h4>
+                        <pre><code class="language-javascript">const fs = require('fs');
+
+// Error-first callback pattern
+fs.readFile('data.txt', 'utf8', (error, data) => {
+    if (error) {
+        console.error('Error reading file:', error);
+        return;
+    }
+    console.log('File content:', data);
+});
+
+// Custom callback function
+function fetchUserData(userId, callback) {
+    setTimeout(() => {
+        const user = { id: userId, name: 'John Doe' };
+        callback(null, user); // null = no error
+    }, 1000);
+}
+
+fetchUserData(1, (error, user) => {
+    if (error) console.error(error);
+    else console.log('User:', user);
+});</code></pre>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>Handling Callback Hell with Async/Await</h4>
+                        <pre><code class="language-javascript">// Before: Callback Hell
+fs.readFile('file1.txt', 'utf8', (err, data1) => {
+    if (err) throw err;
+    fs.readFile('file2.txt', 'utf8', (err, data2) => {
+        if (err) throw err;
+        console.log(data1, data2);
+    });
+});
+
+// After: Using async/await
+async function readFiles() {
+    try {
+        const data1 = await fs.promises.readFile('file1.txt', 'utf8');
+        const data2 = await fs.promises.readFile('file2.txt', 'utf8');
+        console.log(data1, data2);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+readFiles();</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 4: File System Operations -->
+            <div class="module-section">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <h3><i class="fas fa-file"></i> Module 4: File System Operations</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="module-content">
+                    <div class="lesson">
+                        <h4>Reading and Writing Files</h4>
+                        <pre><code class="language-javascript">const fs = require('fs').promises;
+
+// Asynchronous read
+async function readFile() {
+    try {
+        const data = await fs.readFile('input.txt', 'utf8');
+        console.log('File content:', data);
+    } catch (error) {
+        console.error('Error reading file:', error);
+    }
+}
+
+// Asynchronous write
+async function writeFile() {
+    try {
+        await fs.writeFile('output.txt', 'Hello World');
+        console.log('File written successfully');
+    } catch (error) {
+        console.error('Error writing file:', error);
+    }
+}
+
+// Append to file
+async function appendToFile() {
+    try {
+        await fs.appendFile('log.txt', 'Log entry\n');
+        console.log('Appended successfully');
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}</code></pre>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>Directory Operations</h4>
+                        <pre><code class="language-javascript">const fs = require('fs').promises;
+const path = require('path');
+
+async function manageDirs() {
+    try {
+        // Create directory
+        await fs.mkdir('my-folder', { recursive: true });
+        console.log('Directory created');
+
+        // Read directory contents
+        const files = await fs.readdir('my-folder');
+        console.log('Files:', files);
+
+        // Get file stats
+        const stats = await fs.stat('input.txt');
+        console.log('File size:', stats.size);
+        console.log('Is file:', stats.isFile());
+
+        // Remove directory
+        await fs.rmdir('my-folder');
+        console.log('Directory removed');
+
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+manageDirs();</code></pre>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>Practical: Recursive Directory Reader</h4>
+                        <pre><code class="language-javascript">async function readDirRecursive(dirPath) {
+    try {
+        const files = await fs.readdir(dirPath, { withFileTypes: true });
+
+        for (const file of files) {
+            const fullPath = path.join(dirPath, file.name);
+
+            if (file.isDirectory()) {
+                console.log(`[DIR] ${fullPath}`);
+                await readDirRecursive(fullPath);
+            } else {
+                console.log(`[FILE] ${fullPath}`);
+            }
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+readDirRecursive('./project');</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 5: Express.js Framework -->
+            <div class="module-section">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <h3><i class="fas fa-server"></i> Module 5: Express.js Framework</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="module-content">
+                    <div class="lesson">
+                        <h4>Introduction to Express.js</h4>
+                        <p>Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for building web applications and APIs.</p>
+                        <h5>Key Features:</h5>
+                        <ul class="features-list">
+                            <li><strong>Minimalist:</strong> Lightweight and unopinionated</li>
+                            <li><strong>Routing:</strong> Powerful routing system</li>
+                            <li><strong>Middleware:</strong> Flexible middleware system</li>
+                            <li><strong>Performance:</strong> Fast and efficient</li>
+                            <li><strong>Scalable:</strong> Suitable for small to large applications</li>
+                        </ul>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>Installation and Setup</h4>
+                        <pre><code class="language-bash"># Create a new directory
+mkdir my-express-app
+cd my-express-app
+
+# Initialize npm
+npm init -y
+
+# Install Express
+npm install express
+
+# Install nodemon for development
+npm install --save-dev nodemon</code></pre>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>Basic Express Application</h4>
+                        <pre><code class="language-javascript">const express = require('express');
+const app = express();
+const PORT = 3000;
+
+// Middleware
+app.use(express.json());
+
+// Basic route
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
+// Route with parameters
+app.get('/users/:id', (req, res) => {
+    res.send(`User ID: ${req.params.id}`);
+});
+
+// POST request
+app.post('/data', (req, res) => {
+    res.json({ received: req.body });
+});
+
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+});</code></pre>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>Routing Examples</h4>
+                        <pre><code class="language-javascript">// GET request
+app.get('/books', (req, res) => {
+    res.send('Get all books');
+});
+
+// GET with parameter
+app.get('/books/:id', (req, res) => {
+    res.send(`Book ID: ${req.params.id}`);
+});
+
+// Query parameters
+app.get('/search', (req, res) => {
+    const { q, limit } = req.query;
+    res.send(`Search: ${q}, Limit: ${limit}`);
+});
+
+// POST request
+app.post('/books', (req, res) => {
+    res.status(201).json({ message: 'Book created' });
+});
+
+// PUT request
+app.put('/books/:id', (req, res) => {
+    res.json({ message: `Book ${req.params.id} updated` });
+});
+
+// DELETE request
+app.delete('/books/:id', (req, res) => {
+    res.json({ message: `Book ${req.params.id} deleted` });
+});</code></pre>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>Middleware</h4>
+                        <pre><code class="language-javascript">// Logging middleware
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next(); // Pass to next middleware
+});
+
+// Authentication middleware
+const authenticate = (req, res, next) => {
+    const token = req.headers.authorization;
+    if (token === 'Bearer valid-token') {
+        next();
+    } else {
+        res.status(401).json({ error: 'Unauthorized' });
+    }
+};
+
+app.get('/protected', authenticate, (req, res) => {
+    res.json({ message: 'Protected resource' });
+});
+
+// Error handling middleware (must have 4 parameters)
+app.use((err, req, res, next) => {
+    console.error(err.message);
+    res.status(500).json({ error: err.message });
+});</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 6: RESTful API Development -->
+            <div class="module-section">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <h3><i class="fas fa-network-wired"></i> Module 6: RESTful API Development</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="module-content">
+                    <div class="lesson">
+                        <h4>What is REST?</h4>
+                        <p>REST (Representational State Transfer) is an architectural style for designing networked applications using standard HTTP methods.</p>
+                        <h5>HTTP Methods in REST:</h5>
+                        <table class="methods-table">
+                            <tr>
+                                <th>Method</th>
+                                <th>Purpose</th>
+                                <th>Safe</th>
+                                <th>Idempotent</th>
+                            </tr>
+                            <tr>
+                                <td>GET</td>
+                                <td>Retrieve resource</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                            </tr>
+                            <tr>
+                                <td>POST</td>
+                                <td>Create resource</td>
+                                <td>✗</td>
+                                <td>✗</td>
+                            </tr>
+                            <tr>
+                                <td>PUT</td>
+                                <td>Update resource</td>
+                                <td>✗</td>
+                                <td>✓</td>
+                            </tr>
+                            <tr>
+                                <td>DELETE</td>
+                                <td>Delete resource</td>
+                                <td>✗</td>
+                                <td>✓</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>Complete To-Do API Example</h4>
+                        <pre><code class="language-javascript">const express = require('express');
+const app = express();
+
+app.use(express.json());
+
+// In-memory data store
+let todos = [];
+let nextId = 1;
+
+// GET all todos
+app.get('/api/todos', (req, res) => {
+    res.json(todos);
+});
+
+// GET specific todo
+app.get('/api/todos/:id', (req, res) => {
+    const todo = todos.find(t => t.id === parseInt(req.params.id));
+    if (!todo) {
+        return res.status(404).json({ error: 'Todo not found' });
+    }
+    res.json(todo);
+});
+
+// CREATE new todo
+app.post('/api/todos', (req, res) => {
+    if (!req.body.title) {
+        return res.status(400).json({ error: 'Title is required' });
+    }
+    
+    const newTodo = {
+        id: nextId++,
+        title: req.body.title,
+        completed: false
+    };
+    
+    todos.push(newTodo);
+    res.status(201).json(newTodo);
+});
+
+// UPDATE todo
+app.put('/api/todos/:id', (req, res) => {
+    const todo = todos.find(t => t.id === parseInt(req.params.id));
+    if (!todo) {
+        return res.status(404).json({ error: 'Todo not found' });
+    }
+    
+    if (req.body.title) todo.title = req.body.title;
+    if (req.body.completed !== undefined) todo.completed = req.body.completed;
+    
+    res.json(todo);
+});
+
+// DELETE todo
+app.delete('/api/todos/:id', (req, res) => {
+    const index = todos.findIndex(t => t.id === parseInt(req.params.id));
+    if (index === -1) {
+        return res.status(404).json({ error: 'Todo not found' });
+    }
+    
+    const deleted = todos.splice(index, 1);
+    res.json(deleted[0]);
+});
+
+app.listen(3000, () => {
+    console.log('API running on port 3000');
+});</code></pre>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>Testing API with cURL</h4>
+                        <pre><code class="language-bash"># Get all todos
+curl http://localhost:3000/api/todos
+
+# Get specific todo
+curl http://localhost:3000/api/todos/1
+
+# Create new todo
+curl -X POST http://localhost:3000/api/todos \
+  -H "Content-Type: application/json" \
+  -d '{"title":"Learn Express"}'
+
+# Update todo
+curl -X PUT http://localhost:3000/api/todos/1 \
+  -H "Content-Type: application/json" \
+  -d '{"title":"Learn Express","completed":true}'
+
+# Delete todo
+curl -X DELETE http://localhost:3000/api/todos/1</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Examples Section -->
+    <section class="examples" id="examples">
+        <div class="container">
+            <h2>Practical Examples</h2>
+            
+            <div class="example-card">
+                <div class="example-header">
+                    <h3><i class="fas fa-users"></i> User Management System</h3>
+                    <button class="toggle-btn" onclick="toggleExample(this)">Show Code</button>
+                </div>
+                <div class="example-content" style="display: none;">
+                    <pre><code class="language-javascript">const express = require('express');
+const fs = require('fs').promises;
+const path = require('path');
+
+const app = express();
+app.use(express.json());
+
+const usersFile = path.join(__dirname, 'users.json');
+
+// Get all users
+app.get('/api/users', async (req, res) => {
+    try {
+        const data = await fs.readFile(usersFile, 'utf8');
+        const users = JSON.parse(data);
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch users' });
+    }
+});
+
+// Create user
+app.post('/api/users', async (req, res) => {
+    try {
+        const { name, email } = req.body;
+        
+        if (!name || !email) {
+            return res.status(400).json({ error: 'Name and email required' });
+        }
+        
+        const data = await fs.readFile(usersFile, 'utf8');
+        const users = JSON.parse(data);
+        
+        const newUser = {
+            id: users.length + 1,
+            name,
+            email,
+            createdAt: new Date()
+        };
+        
+        users.push(newUser);
+        await fs.writeFile(usersFile, JSON.stringify(users, null, 2));
+        
+        res.status(201).json(newUser);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to create user' });
+    }
+});
+
+app.listen(3000, () => {
+    console.log('Server running on port 3000');
+});</code></pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <div class="example-header">
+                    <h3><i class="fas fa-tasks"></i> Task Scheduler with Events</h3>
+                    <button class="toggle-btn" onclick="toggleExample(this)">Show Code</button>
+                </div>
+                <div class="example-content" style="display: none;">
+                    <pre><code class="language-javascript">const express = require('express');
+const EventEmitter = require('events');
+
+const app = express();
+app.use(express.json());
+
+class TaskManager extends EventEmitter {
+    constructor() {
+        super();
+        this.tasks = [];
+        this.nextId = 1;
+    }
+    
+    addTask(title, description, dueDate) {
+        const task = {
+            id: this.nextId++,
+            title,
+            description,
+            dueDate: new Date(dueDate),
+            status: 'pending',
+            createdAt: new Date()
+        };
+        
+        this.tasks.push(task);
+        this.emit('taskCreated', task);
+        return task;
+    }
+    
+    completeTask(taskId) {
+        const task = this.tasks.find(t => t.id === taskId);
+        if (!task) return null;
+        
+        task.status = 'completed';
+        task.completedAt = new Date();
+        this.emit('taskCompleted', task);
+        return task;
+    }
+}
+
+const taskManager = new TaskManager();
+
+// Event listeners
+taskManager.on('taskCreated', (task) => {
+    console.log(`📌 New task: ${task.title}`);
+});
+
+taskManager.on('taskCompleted', (task) => {
+    console.log(`✅ Completed: ${task.title}`);
+});
+
+// Routes
+app.post('/api/tasks', (req, res) => {
+    const { title, description, dueDate } = req.body;
+    const task = taskManager.addTask(title, description, dueDate);
+    res.status(201).json(task);
+});
+
+app.get('/api/tasks', (req, res) => {
+    res.json(taskManager.tasks);
+});
+
+app.put('/api/tasks/:id/complete', (req, res) => {
+    const task = taskManager.completeTask(parseInt(req.params.id));
+    if (!task) {
+        return res.status(404).json({ error: 'Task not found' });
+    }
+    res.json(task);
+});
+
+app.listen(3000, () => {
+    console.log('Task Manager running on port 3000');
+});</code></pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <div class="example-header">
+                    <h3><i class="fas fa-blog"></i> Complete Blog API</h3>
+                    <button class="toggle-btn" onclick="toggleExample(this)">Show Code</button>
+                </div>
+                <div class="example-content" style="display: none;">
+                    <pre><code class="language-javascript">const express = require('express');
+const app = express();
+
+app.use(express.json());
+
+// Database simulation
+const db = {
+    posts: [
+        {
+            id: 1,
+            title: 'Getting Started with Node.js',
+            content: 'Node.js is a runtime environment...',
+            author: 'John Doe',
+            createdAt: new Date('2024-01-01')
+        }
+    ],
+    nextPostId: 2
+};
+
+// Middleware: validation
+const validatePost = (req, res, next) => {
+    const { title, content, author } = req.body;
+    
+    if (!title || !content || !author) {
+        return res.status(400).json({
+            error: 'Missing required fields'
+        });
+    }
+    
+    if (title.length < 5) {
+        return res.status(400).json({
+            error: 'Title must be at least 5 characters'
+        });
+    }
+    
+    next();
+};
+
+// Routes
+app.get('/api/posts', (req, res) => {
+    const { sort } = req.query;
+    let posts = [...db.posts];
+    
+    if (sort === 'newest') {
+        posts.sort((a, b) => b.createdAt - a.createdAt);
+    }
+    
+    res.json({
+        success: true,
+        data: posts
+    });
+});
+
+app.post('/api/posts', validatePost, (req, res) => {
+    const { title, content, author } = req.body;
+    
+    const newPost = {
+        id: db.nextPostId++,
+        title,
+        content,
+        author,
+        createdAt: new Date()
+    };
+    
+    db.posts.push(newPost);
+    
+    res.status(201).json({
+        success: true,
+        message: 'Post created',
+        data: newPost
+    });
+});
+
+app.delete('/api/posts/:id', (req, res) => {
+    const index = db.posts.findIndex(p => p.id === parseInt(req.params.id));
+    
+    if (index === -1) {
+        return res.status(404).json({ error: 'Post not found' });
+    }
+    
+    const deleted = db.posts.splice(index, 1);
+    res.json({ success: true, data: deleted[0] });
+});
+
+app.listen(3000, () => {
+    console.log('Blog API running on port 3000');
+});</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources" id="resources">
+        <div class="container">
+            <h2>Resources & Documentation</h2>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Official Documentation</h3>
+                    <ul>
+                        <li><a href="https://nodejs.org/docs" target="_blank">Node.js Official Docs</a></li>
+                        <li><a href="https://expressjs.com" target="_blank">Express.js Documentation</a></li>
+                        <li><a href="https://www.npmjs.com" target="_blank">NPM Registry</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <i class="fas fa-cube"></i>
+                    <h3>Recommended Packages</h3>
+                    <ul>
+                        <li><code>dotenv</code> - Environment configuration</li>
+                        <li><code>cors</code> - Cross-Origin Resource Sharing</li>
+                        <li><code>helmet</code> - Security headers</li>
+                        <li><code>mongoose</code> - MongoDB ODM</li>
+                        <li><code>jsonwebtoken</code> - JWT authentication</li>
+                        <li><code>nodemon</code> - Development auto-reload</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Practice Projects</h3>
+                    <ol>
+                        <li>Build a blog API with comments</li>
+                        <li>Create a todo list with user authentication</li>
+                        <li>Develop an e-commerce product catalog API</li>
+                        <li>Build a weather app that fetches external API data</li>
+                        <li>Create a chat application with WebSockets</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Practices Section -->
+    <section class="best-practices">
+        <div class="container">
+            <h2>Best Practices</h2>
+            
+            <div class="practice-grid">
+                <div class="practice-card">
+                    <h3><i class="fas fa-check-circle"></i> Error Handling</h3>
+                    <pre><code class="language-javascript">// Use try-catch with async/await
+async function getData() {
+    try {
+        const data = await fetchData();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+}
+
+// Error middleware
+app.use((err, req, res, next) => {
+    const status = err.status || 500;
+    res.status(status).json({ error: err.message });
+});</code></pre>
+                </div>
+
+                <div class="practice-card">
+                    <h3><i class="fas fa-cog"></i> Environment Variables</h3>
+                    <pre><code class="language-bash"># Install dotenv
+npm install dotenv</code></pre>
+                    <pre><code class="language-javascript">// .env
+PORT=3000
+NODE_ENV=development
+
+// config.js
+require('dotenv').config();
+
+module.exports = {
+    port: process.env.PORT || 3000,
+    nodeEnv: process.env.NODE_ENV
+};</code></pre>
+                </div>
+
+                <div class="practice-card">
+                    <h3><i class="fas fa-shield-alt"></i> Input Validation</h3>
+                    <pre><code class="language-javascript">const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+};
+
+app.post('/users', (req, res) => {
+    if (!validateEmail(req.body.email)) {
+        return res.status(400).json({ 
+            error: 'Invalid email' 
+        });
+    }
+    // Process valid data
+});</code></pre>
+                </div>
+
+                <div class="practice-card">
+                    <h3><i class="fas fa-log"></i> Logging</h3>
+                    <pre><code class="language-javascript">// Logging middleware
+const logger = (req, res, next) => {
+    const start = Date.now();
+    
+    res.on('finish', () => {
+        const duration = Date.now() - start;
+        console.log(
+            `${req.method} ${req.url} - ${res.statusCode} (${duration}ms)`
+        );
+    });
+    
+    next();
+};
+
+app.use(logger);</code></pre>
+                </div>
+
+                <div class="practice-card">
+                    <h3><i class="fas fa-lock"></i> Rate Limiting</h3>
+                    <pre><code class="language-bash">npm install express-rate-limit</code></pre>
+                    <pre><code class="language-javascript">const rateLimit = require('express-rate-limit');
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100
+});
+
+app.use('/api/', limiter);</code></pre>
+                </div>
+
+                <div class="practice-card">
+                    <h3><i class="fas fa-code"></i> Code Organization</h3>
+                    <pre><code class="language">project/
+├── src/
+│   ├── app.js
+│   ├── routes/
+│   ├── controllers/
+│   ├── middleware/
+│   └── utils/
+├── tests/
+├── config/
+├── .env
+└── package.json</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>Have questions about the course? Contact us or follow for updates!</p>
+            
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:support@backend-course.com">Email</a>
+                </div>
+                <div class="contact-method">
+                    <i class="fab fa-github"></i>
+                    <a href="https://github.com" target="_blank">GitHub</a>
+                </div>
+                <div class="contact-method">
+                    <i class="fab fa-twitter"></i>
+                    <a href="https://twitter.com" target="_blank">Twitter</a>
+                </div>
+                <div class="contact-method">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>Comprehensive backend development course covering Node.js and Express.js fundamentals.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#modules">Modules</a></li>
+                        <li><a href="#examples">Examples</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Backend Development Course. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
